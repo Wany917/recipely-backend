@@ -1,2 +1,4 @@
 .htaccess
 autoload.php
+.env
+vendor
