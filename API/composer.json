@@ -1,0 +1,21 @@
+{
+    "name": "yvann/api",
+    "require": {
+        "firebase/php-jwt": "^6.7",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yvann\\Api\\": "src/"
+        },
+        "exclude-from-classmap": [
+        "/vendor/firebase/php-jwt/"
+    ]
+    },
+    "authors": [
+        {
+            "name": "Wany917",
+            "email": "yvannkakou03@gmail.com"
+        }
+    ]
+}
