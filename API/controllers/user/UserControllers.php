@@ -320,11 +320,10 @@ class UserControllers extends stdClass {
             if ($payload) {
                 $model = new UserModel();
                 $users = $model->getAllUsers();
-                $users = $model->getAllUsers();
 
+                $responseArray = [];
                 foreach ($users as $user) {
-                    echo $this->response->sendResponse(200, true, 'Recipely users', 
-                    [
+                    $responseArray[] = [
                         "id"  => $user["id"],
                         "zipCode"  => "75012",
                         "state" => 'Ile de France',
@@ -346,8 +345,9 @@ class UserControllers extends stdClass {
                         "experience"  => $user['experience'],
                         "is_provider"  => $user['account_type'] == 1 ? true : false,
                         "interest"  => $user['interest'],
-                    ]);
+                    ];
                 }
+                echo $this->response->sendResponse(200, true, 'Recipely users', $responseArray);
             } else {
                 echo $this->response->sendResponse(404, false, 
                 [
