@@ -179,7 +179,7 @@ class UserModel {
             );
 
             $stmt->execute();
-            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if(!$result){
                 return throw new UserExceptions('No users found');
