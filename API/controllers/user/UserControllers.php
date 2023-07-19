@@ -320,6 +320,8 @@ class UserControllers extends stdClass {
             if ($payload) {
                 $model = new UserModel();
                 $users = $model->getAllUsers();
+                var_dump($users);
+                exit;
                 echo $this->response->sendResponse(200, true, 'Recipely users', 
                 [
                     'id' => $users['id'],
