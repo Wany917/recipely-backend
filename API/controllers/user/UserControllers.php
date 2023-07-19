@@ -320,31 +320,34 @@ class UserControllers extends stdClass {
             if ($payload) {
                 $model = new UserModel();
                 $users = $model->getAllUsers();
-                echo $this->response->sendResponse(200, true, 'Recipely users', 
-                [
-                    "id"  => $users["id"],
-                    "zipCode"  => "75012",
-                    "state" => 'Ile de France',
-                    "city" => 'Paris',
-                    "email" => $users['email'],
-                    "address" => $users['address'],
-                    "name" => $users['firstname'].' '.$users['lastname'],
-                    "isVerified" => $users['verified'],
-                    "country"  => 'France',
-                    "avatarUrl"  => $users['img_profile'],
-                    "phoneNumber" => $users['phone_number'],
-                    "status" => $users[''],
-                    "role"  => $users['account_type'] == 2 || $users['account_type'] == 3 ? 'admin' : 'user',
-                    "status"  => '',
-                    "company"  => '',
-                    "username"  => $users['username'],
-                    "subscription"  => $users['subscription'],
-                    "specialty"  => $users['specialty'],
-                    "experience"  => $users['experience'],
-                    "is_provider"  => $users['account_type'] == 1 ? true : false,
-                    "interest"  => $users['interest'],
-                ]
-            );
+                $users = $model->getAllUsers();
+
+                foreach ($users as $user) {
+                    echo $this->response->sendResponse(200, true, 'Recipely users', 
+                    [
+                        "id"  => $user["id"],
+                        "zipCode"  => "75012",
+                        "state" => 'Ile de France',
+                        "city" => 'Paris',
+                        "email" => $user['email'],
+                        "address" => $user['address'],
+                        "name" => $user['firstname'].' '.$user['lastname'],
+                        "isVerified" => $user['verified'],
+                        "country"  => 'France',
+                        "avatarUrl"  => $user['img_profile'],
+                        "phoneNumber" => $user['phone_number'],
+                        "status" => '',
+                        "role"  => $user['account_type'] == 2 || $user['account_type'] == 3 ? 'admin' : 'user',
+                        "status"  => '',
+                        "company"  => '',
+                        "username"  => $user['username'],
+                        "subscription"  => $user['subscription'],
+                        "specialty"  => $user['specialty'],
+                        "experience"  => $user['experience'],
+                        "is_provider"  => $user['account_type'] == 1 ? true : false,
+                        "interest"  => $user['interest'],
+                    ]);
+                }
             } else {
                 echo $this->response->sendResponse(404, false, 
                 [
